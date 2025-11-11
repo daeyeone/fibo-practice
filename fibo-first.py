@@ -1,6 +1,10 @@
-def fibonacci_sequence(k):
-    if k < 2:
-        return k
-    return fibonacci_sequence(k - 1) + fibonacci_sequence(k - 2)
+def fibo(n):
+    pad = {0: 0, 1: 1}
+    def fib_inner(n):
+        if n not in pad:
+            pad[n] = fib_inner(n - 1) + fib_inner(n - 2)
+        return pad[n]
+    return fib_inner(n)
+    
 if __name__ == "__main__":
-    print(fibonacci_sequence(10))
+    print(fibo(4))
